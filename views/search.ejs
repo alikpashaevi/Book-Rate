@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs') %>
+
+    <section class="search-section">
+      <h1 class="title h1">Choose any book you would like to add</h1>
+      <div class="books">
+        <% if(searchBooks){ %>
+          <% searchBooks.forEach((book) => { %>
+            
+              <form action="/add" method="post" class="book-card">
+                <input type="hidden" name="name" value="<%= book.title %>">
+                <input type="hidden" name="year" value="<%= book.copyright %>">
+                <input type="hidden" name="src" value="<%= book.published_works[0].cover_art_url %>">
+                <img src="<%= book.published_works[0].cover_art_url %>" alt="book cover" class="book-cover">
+                <div class="about-book">
+                  <h3 class="book-name"><%= book.title %></h3>
+                  <span class="book-year">Release year: <%= book.copyright %></span>
+                  <button class="add-btn" type="submit">Add</button>
+                </div>  
+              </form>
+            
+          <% }) %>
+        <% } %>
+      </div>
+      
+    </section>
+
+<%- include('partials/footer.ejs') %>

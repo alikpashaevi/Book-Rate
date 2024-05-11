@@ -1,0 +1,35 @@
+<%- include('partials/header.ejs') %>
+
+    <section class="main-section">
+      <div class="title">
+        <h1 class="h1">The Books I've Read</h1>
+        <p>Here are some of the books I've read with my personal notes for each of them.</p>
+      </div>
+      <div class="books">
+          <% for(let book of books){ %>
+              <div class="book-card">
+                <img src='<%= book.src %>' alt="book cover" class="book-cover">
+                <div class="about-book">
+                  <div class="book-info">
+                    <form action="/book-notes" method="get" class="book-name-form">
+                      <h3 class="book-name"><%= book.name %></h3>
+                    </form>
+                    <span class="book-year"><%= book.year %></span>
+                  </div>
+                  <div class="buttons">
+                    <form action="/delete" method="post">
+                      <input type="hidden" onchange="this.form.submit()" name="deleteItemId" value="<%= book.id %>">
+                      <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                    <form action="/note" method="get">
+                      
+                      <input type="hidden" onchange="this.form.submit()" name="noteId" value=<%= book.id %>>
+                      <button type="submit" class="seenote-btn">See Note</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+          <% } %>
+      </div>
+    </section>
+<%- include('partials/footer.ejs') %>

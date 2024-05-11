@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+    <main>
+      <section class="my-notes">
+        <h1 class="h1">Edit Your Note</h1>
+        <h1 class="book-name" style="text-align: center; opacity: .8;"><%= name %></h1>
+        <form action="/addNote" method="post" class="edit-note-form">
+            <textarea name="bookNote" placeholder="Enter your note..."></textarea>
+            <div class="edit-button-div">
+              <input type="hidden" name="saveButton" value="<%= id %>">
+              <button type="submit" class="edit-btn">Save Note</button>
+            </div>
+        </form>
+      </section>
+    </main>
+<%- include('partials/footer.ejs') %>

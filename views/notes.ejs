@@ -1,0 +1,19 @@
+<%- include('partials/header.ejs') %>
+
+    <section class="edit-section">
+      <h1 class="h1">Notes</h1>
+      <div class="notes-div">
+        <div class="book-div">
+          <img src="<%= src %>" alt="book-cover" class="book-cover">
+          <h2 class="book-name"><%= name %></h2>
+        </div>
+        <p class="note"><%= note %></p>
+      </div>
+      <form action="/editNote" method="get" class="edit-btn-form">
+        <input type="hidden" name="noteName" value="<%= name %>">
+        <input type="hidden" name="editNote" value=<%= id %>>
+        <button class="edit-btn">Edit Note</button>
+      </form>
+    </section>
+
+<%- include('partials/footer.ejs') %>
